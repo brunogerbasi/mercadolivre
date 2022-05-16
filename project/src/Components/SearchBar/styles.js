@@ -1,9 +1,24 @@
 import styled from "styled-components"
 
+
+
+
+export const ContainerMenuBar = styled.div`
+    @media (max-width: 780px) {
+        display: flex ;
+        justify-content: space-between ;
+        align-items: center ;
+    }
+`
 export const ContainerBar = styled.div`
     display:flex ;
     align-items: center ;
     margin-bottom: 1rem ;
+
+    @media (max-width: 780px) {
+        width: calc( 100% - 50px) ;
+        margin-bottom: 0 ;
+    }
 
     input{
         width: calc(100% - 40px) ;
@@ -28,3 +43,14 @@ export const ContainerBar = styled.div`
 
     }
 `;
+
+
+export const ToggleMenu = styled.div`
+    font-size: 28px ;
+    line-height: 28px ;
+    padding-top: 2px ;
+    cursor: pointer ;
+    @media (min-width: 781px) {
+        display: none ;        
+    }
+`

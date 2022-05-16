@@ -4,6 +4,14 @@ export const CategoryContainer = styled.nav`
     background-color: #FFFFFF ;
     border: solid 1px #c9c9c9c9;
     width: 100% ;    
+    @media (max-width: 780px) {        
+        position: fixed;
+        bottom: 65px;
+        left: 0;
+        width: 100%;
+        max-height: calc(100vh - 65px);
+        overflow-y: scroll;
+    }
     h3{
         margin: 0;
         padding: 1rem ;

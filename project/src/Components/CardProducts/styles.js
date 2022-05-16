@@ -15,8 +15,23 @@ export const Item = styled.div `
     position: relative; ;
     border: solid 1px #c3c3c3c3;
     padding: 0.5rem;
-    width: calc(100% / 4 - 1rem) ;
+    width: 100% ;
+    min-width: 232px ;
+    max-width: calc(100% / 4 - 1rem) ;
     text-align: center;    
+
+    @media (max-width: 1328px ) {
+        min-width: 280px ;
+        max-width: calc(100% / 3 - 1rem) ;
+    }
+    @media (max-width: 1215px ) {
+        max-width: calc(100% / 2 - 1rem) ;     
+        min-width: 190px ;   
+    }
+
+    @media (max-width: 600px ) {
+        max-width: calc(100% / 1 - 1rem) ;        
+    }
 
     button{
         background: none ;

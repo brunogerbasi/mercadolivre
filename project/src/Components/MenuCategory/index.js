@@ -1,33 +1,52 @@
 import React, { useState, useEffect } from 'react';
-import { CategoryContainer } from './styles';
+import { useDispatch } from 'react-redux';
+import { productState } from "store/Product/Product.actions.js"
 import api from 'services/api';
+import { useNavigate } from 'react-router-dom';
 
-function MenuCategory({ stateIdCatg, setStateIdCatg}) {
+import { CategoryContainer } from './styles';
+
+function MenuCategory({ setBtnToggleMenu }) {
+    const dispatch = useDispatch();
+
     const [respAPI, setRespAPI] = useState();
+    const navigate = useNavigate();
 
     useEffect(() => {
         api
             .get("/sites/MLB/categories")
             .then((response) => {
-                setRespAPI(response.data);                
+                setRespAPI(response.data);
             })
             .catch((err) => {
-                console.error("ops! ocorreu um erro" + err);
+                
             });
     }, []);
 
-    function HandleCategoryID(id, name){        
-        setStateIdCatg({ ...stateIdCatg,
-            id : id,
-            name : name
-        })
+    function HandleCategoryID(id, name) {
+        dispatch(productState({
+            id: id,
+            name: name
+        }));
+
+        if (window.matchMedia("(min-width:781px)").matches) {
+            setBtnToggleMenu(true)
+        } else {
+            setBtnToggleMenu(false)
+        }
+
+        localStorage.setItem("categoria", id)
+
+        navigate("/products");
     }
-    
+
+
+
 
     return (
         <CategoryContainer>
-            <h3>Categories</h3>     
-            <p></p>       
+            <h3>Categories</h3>
+            <p></p>
             <ul>
                 {
                     respAPI?.map((ctg) => (
@@ -37,7 +56,7 @@ function MenuCategory({ stateIdCatg, setStateIdCatg}) {
                             <button type='button'>{ctg.name}</button>
                         </li>
                     ))
-                }   
+                }
             </ul>
         </CategoryContainer>
 

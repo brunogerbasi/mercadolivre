@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from 'context/auth';
 
-import { HeaderContainer } from './styles';
+import { HiOutlineLogout } from "react-icons/hi"
+import { HeaderContainerLog } from './styles';
 import Logo from "assets/img/logo-mercado-livre.png"
+import { Link } from 'react-router-dom';
 
 function Header() {
+  const { logout } = useContext(AuthContext)
+
+  const handleLogout = () => {
+    logout();
+  }
+
   return (
-    <HeaderContainer>
+    <HeaderContainerLog>
       <div>
-        <img src={Logo} alt="Logo Mercado Livre"/>
+        <Link to="/login"><img src={Logo} alt="Logo Mercado Livre" /></Link>
+
+        <button type='button'
+          onClick={handleLogout}
+        >Sair <span><HiOutlineLogout /></span></button>
       </div>
-    </HeaderContainer>
+    </HeaderContainerLog>
   );
 }
 

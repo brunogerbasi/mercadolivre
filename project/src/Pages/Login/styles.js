@@ -4,6 +4,14 @@ export const MainContainer = styled.main`
     min-height: calc(100vh - 7rem) ;
     background: linear-gradient(0deg, rgba(237,237,237,1) 0%, rgba(237,237,237,1) 70%, rgba(255,240,89,1) 70%, rgba(255,240,89,1) 100%);
     padding-top: 5rem ;
+
+    @media  (max-width: 780px ) {
+        background:  rgba(237,237,237,1);
+        display: flex ;
+        justify-content: center ;
+        align-items: center ;
+        padding: 1rem ;
+    }
 `;
 
 export const CardLogin = styled.div`
@@ -52,6 +60,14 @@ export const CardLogin = styled.div`
 
             &:hover{
                 background-color: #2968c8;
+            }
+        }
+
+        p{
+            color: red ;
+            font-size: 0.9rem ;
+            span{
+                color: #191919;
             }
         }
     }
